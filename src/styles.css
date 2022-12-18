@@ -1,0 +1,61 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.task-wrap {
+  display: grid;
+  grid-template-columns: 64% 12% 12% 12%;
+  margin: 20px;
+}
+.tasks {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
+  font-size: 1.3rem;
+}
+.done {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
+  font-size: 1.3rem;
+  text-decoration: line-through;
+  opacity: 30%;
+}
+.task-number {
+  color: #999;
+  border: 1px solid #999;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  text-align: center;
+  font-size: 14px;
+  margin-right: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.iconwrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  gap: 12px;
+}
+.mark {
+  width: 19px;
+  height: 19px;
+  color: lightgreen;
+}
+.edit {
+  width: 19px;
+  height: 19px;
+  color: orange;
+}
+.del {
+  width: 19px;
+  height: 19px;
+  color: tomato;
+}
