@@ -47,15 +47,23 @@
 .mark {
   width: 19px;
   height: 19px;
-  color: lightgreen;
+  color: rgb(32, 106, 32);
+  cursor: pointer;
 }
 .edit {
   width: 19px;
   height: 19px;
-  color: orange;
+  color: #ff6200;
+  cursor: pointer;
 }
 .del {
   width: 19px;
   height: 19px;
-  color: tomato;
+  color: #f10f0f;
+  cursor: pointer;
+}
+.del:hover,
+.edit:hover,
+.mark:hover {
+  opacity: 70%;
 }
