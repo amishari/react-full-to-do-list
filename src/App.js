@@ -22,6 +22,7 @@ export default function App() {
       if (task.id === id) {
         return { ...task, status: !task.status };
       }
+      return task;
     });
     setToDo(newTask);
   };
@@ -79,43 +80,45 @@ export default function App() {
 
       {toDo ? "" : "Nothing to display!"}
       {toDo &&
-        toDo.map((task, index) => {
-          return (
-            <div key={task.id} className="task-wrap">
-              <div className={!task.status ? "tasks" : "done"}>
-                <span className="task-number">{index + 1}</span>
-                <span className="task-title">{task.title}</span>
-              </div>
+        toDo
+          .sort((a, b) => (a.id > b.id ? 1 : -1))
+          .map((task, index) => {
+            return (
+              <div key={task.id} className="task-wrap">
+                <div className={!task.status ? "tasks" : "done"}>
+                  <span className="task-number">{index + 1}</span>
+                  <span className="task-title">{task.title}</span>
+                </div>
 
-              <span className="iconwrap">
-                <FaCheckCircle
-                  className="mark"
-                  onClick={(id) => markHandler(task.id)}
-                  title="Done"
-                />
-                {task.status ? null : (
-                  <FaPen
-                    className="edit"
-                    onClick={() =>
-                      setUpdated({
-                        id: task.id,
-                        title: task.title,
-                        status: task.status ? true : false,
-                      })
-                    }
-                    title="Edit"
+                <span className="iconwrap">
+                  <FaCheckCircle
+                    className="mark"
+                    onClick={(id) => markHandler(task.id)}
+                    title="Done"
                   />
-                )}
+                  {task.status ? null : (
+                    <FaPen
+                      className="edit"
+                      onClick={() =>
+                        setUpdated({
+                          id: task.id,
+                          title: task.title,
+                          status: task.status ? true : false,
+                        })
+                      }
+                      title="Edit"
+                    />
+                  )}
 
-                <FaTrashAlt
-                  className="del"
-                  onClick={(id) => delHandler(task.id)}
-                  title="Delete"
-                />
-              </span>
-            </div>
-          );
-        })}
+                  <FaTrashAlt
+                    className="del"
+                    onClick={(id) => delHandler(task.id)}
+                    title="Delete"
+                  />
+                </span>
+              </div>
+            );
+          })}
     </div>
   );
 }
