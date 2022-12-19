@@ -22,6 +22,7 @@ export default function App() {
       if (task.id === id) {
         return { ...task, status: !task.status };
       }
+      return task;
     });
     setToDo(newTask);
   };
