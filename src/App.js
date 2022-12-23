@@ -12,7 +12,11 @@ export default function App() {
     if (newTask) {
       let num = toDo.length + 1;
       let newEntry = { id: num, title: newTask, status: false };
-      setToDo([...toDo, newEntry]);
+      setToDo((prev) => {
+        let updating = [...prev];
+        updating.unshift(newEntry);
+        return updating;
+      });
       setNewTask("");
     }
   };
@@ -26,10 +30,12 @@ export default function App() {
     });
     setToDo(newTask);
   };
+
   const delHandler = (id) => {
     let newTask = toDo.filter((task) => task.id !== id);
     setToDo(newTask);
   };
+
   const changeTask = (e) => {
     let newEntry = {
       id: updated.id,
@@ -46,6 +52,7 @@ export default function App() {
     setToDo(updatedObject);
     setUpdated("");
   };
+
   const cancelHandler = (id) => {
     setUpdated("");
   };
@@ -81,7 +88,7 @@ export default function App() {
       {toDo ? "" : "Nothing to display!"}
       {toDo &&
         toDo
-          .sort((a, b) => (a.id > b.id ? 1 : -1))
+          // .sort((a, b) => (a.id > b.id ? 1 : -1))
           .map((task, index) => {
             return (
               <div key={task.id} className="task-wrap">
