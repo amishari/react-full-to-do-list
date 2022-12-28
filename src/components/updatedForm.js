@@ -1,4 +1,3 @@
-import {useState} from "react";
 import "../styles.css";
 const UpdatedForm =({updated,changeTask,editHandler,cancelHandler })=>{
     return(
