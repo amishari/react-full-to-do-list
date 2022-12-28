@@ -1,5 +1,9 @@
-import React, { useState } from "react";
-import { FaCheckCircle, FaPen, FaTrashAlt } from "react-icons/fa";
+import { useState } from "react";
+import ToDo from "./components/toDo.js";
+import AddTaskForm from "./components/addtaskForm.js";
+import UpdateForm from "./components/updateForm.js";
+
+// import { FaCheckCircle, FaPen, FaTrashAlt } from "react-icons/fa";
 
 import "./styles.css";
 
@@ -61,71 +65,28 @@ export default function App() {
     <div className="App">
       <h1>To Do List</h1>
       {updated && updated ? (
-        <div className="update">
-          <input
-            className=""
-            value={updated.title}
-            onChange={(e) => changeTask(e)}
-          />
-          <div className="actions">
-            <button onClick={editHandler}>Update</button>
-            <button onClick={cancelHandler}>Cancel</button>
-          </div>
-        </div>
+        <UpdateForm
+          updated={updated}
+          changeTask={changeTask}
+          editHandler={editHandler}
+          cancelHandler={cancelHandler}
+        />
       ) : (
-        <div className="addTask">
-          <input
-            className=""
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
+        <AddTaskForm 
+          newTask={newTask}
+          setNewTask={setNewTask}
+          addHandler={addHandler}
           />
-          <button className="" onClick={addHandler}>
-            Add
-          </button>
-        </div>
       )}
+      {toDo ? "" : "Nothing to display!"}  
+      <ToDo
+        toDo={toDo}
+        markHandler={markHandler}
+        delHandler={delHandler}
+        setUpdated={setUpdated}
 
-      {toDo ? "" : "Nothing to display!"}
-      {toDo &&
-        toDo
-          // .sort((a, b) => (a.id > b.id ? 1 : -1))
-          .map((task, index) => {
-            return (
-              <div key={task.id} className="task-wrap">
-                <div className={!task.status ? "tasks" : "done"}>
-                  <span className="task-number">{index + 1}</span>
-                  <span className="task-title">{task.title}</span>
-                </div>
+       />
 
-                <span className="iconwrap">
-                  <FaCheckCircle
-                    className="mark"
-                    onClick={(id) => markHandler(task.id)}
-                    title="Done"
-                  />
-                  {task.status ? null : (
-                    <FaPen
-                      className="edit"
-                      onClick={() =>
-                        setUpdated({
-                          id: task.id,
-                          title: task.title,
-                          status: task.status ? true : false,
-                        })
-                      }
-                      title="Edit"
-                    />
-                  )}
-
-                  <FaTrashAlt
-                    className="del"
-                    onClick={(id) => delHandler(task.id)}
-                    title="Delete"
-                  />
-                </span>
-              </div>
-            );
-          })}
     </div>
   );
 }
