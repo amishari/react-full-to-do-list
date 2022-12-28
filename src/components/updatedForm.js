@@ -1,6 +1,6 @@
 import {useState} from "react";
-import "./styles.css";
-const UpdateForm ({updated,changeTask,editHandler,cancelHandler })=>{
+import "../styles.css";
+const UpdatedForm =({updated,changeTask,editHandler,cancelHandler })=>{
     return(
          <div className="update">
             <input

@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import "./styles.css";
-const AddTaskForm ({ newTask, setNewTask, addHandler})=>{
+import "../styles.css";
+const AddTaskForm =({ newTask, setNewTask, addHandler})=>{
     return(
        
        <div className="addTask">

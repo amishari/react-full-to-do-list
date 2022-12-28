@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ToDo from "./components/toDo.js";
 import AddTaskForm from "./components/addtaskForm.js";
-import UpdateForm from "./components/updateForm.js";
+import UpdateForm from "./components/updatedForm.js";
 
 // import { FaCheckCircle, FaPen, FaTrashAlt } from "react-icons/fa";
 
